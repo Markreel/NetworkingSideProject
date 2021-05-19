@@ -84,9 +84,7 @@ namespace MarkCode.Multiplayer
 
             // We are only interested in Beamers
             // we should be using tags but for the sake of distribution, let's simply check by name.
-            if (!_other.name.Contains("Beam")) { return; }
-
-            Health -= 0.1f;
+            if (_other.name.Contains("Beam")) { Health -= 0.1f; }
         }
 
         private void OnTriggerStay(Collider _other)
@@ -96,10 +94,10 @@ namespace MarkCode.Multiplayer
 
             // We are only interested in Beamers
             // we should be using tags but for the sake of distribution, let's simply check by name.
-            if (!_other.name.Contains("Beam")) { return; }
-
-            // we slowly affect health when beam is constantly hitting us, so player has to move to prevent death.
-            Health -= 0.1f * Time.deltaTime;
+            if (_other.name.Contains("Beam")) { Health -= 0.1f * Time.deltaTime; }
+            
+            Openable _openable = _other.GetComponent<Openable>();
+            if (_openable != null && Input.GetKeyDown(KeyCode.Space)) { _openable.Open(); }
         }
 
         private void ProcessInputs()
@@ -119,6 +117,7 @@ namespace MarkCode.Multiplayer
                     IsFiring = false;
                 }
             }
+
         }
 
         public void OnPhotonSerializeView(PhotonStream _stream, PhotonMessageInfo _info)
