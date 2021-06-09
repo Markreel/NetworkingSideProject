@@ -12,21 +12,11 @@ namespace MarkCode.Multiplayer
         [SerializeField]
         private TextMeshProUGUI playerNameText;
 
-        [Tooltip("UI Slider to display Player's Health")]
-        [SerializeField]
-        private Slider playerHealthSlider;
-
-        private PlayerManager target;
+        private KeyManager target;
 
 
         private void Update()
         {
-            // Reflect the Player Health
-            if (playerHealthSlider != null)
-            {
-                playerHealthSlider.value = target.Health;
-            }
-
             if (target == null)
             {
                 Destroy(gameObject);
@@ -34,7 +24,7 @@ namespace MarkCode.Multiplayer
             }
         }
 
-        public void SetTarget(PlayerManager _target)
+        public void SetTarget(KeyManager _target)
         {
             if (_target == null)
             {

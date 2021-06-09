@@ -27,7 +27,14 @@ namespace MarkCode.Multiplayer
                 if (PlayerManager.LocalPlayerInstance == null)
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-                    PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+
+                    GameObject _obj = PhotonNetwork.Instantiate(PlayerPrefab.name, new Vector3(0f, 0f, 0f), PlayerPrefab.transform.rotation, 0);
+
+                    KeyManager _keyMan = _obj.GetComponent<KeyManager>();
+                    if(_keyMan != null && !PhotonNetwork.IsMasterClient)
+                    {
+                        _keyMan.SetSecondPlayerValues();
+                    }
                 }
                 else
                 {

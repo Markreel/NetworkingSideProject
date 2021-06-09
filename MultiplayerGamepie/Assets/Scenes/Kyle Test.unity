@@ -469,7 +469,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7902417988563788962, guid: 3366c1fcd7ee9c844a5792291d976c08, type: 3}
       propertyPath: m_Name
-      value: My Robot Kyle
+      value: Key
       objectReference: {fileID: 0}
     - target: {fileID: 7902417988564285570, guid: 3366c1fcd7ee9c844a5792291d976c08, type: 3}
       propertyPath: m_RootOrder
